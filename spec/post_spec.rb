@@ -34,8 +34,18 @@ RSpec.describe Post, type: :model do
     subject.likes_counter = -1
     expect(subject).to_not be_valid
   end
+  describe '#increment_user_posts_counter' do
+    let!(:user) { User.create(name: 'John Doe', posts_counter: 0) }
+    subject { Post.create(title: 'Test post', author_id: user.id) }
+
+    it 'increments the user posts_counter by 1' do
+      expect { subject.increment_user_posts_counter }.to change { user.reload.posts_counter }.by(1)
+    end
+  end
 
   it 'Return five most recent comments for post' do
     expect(subject.recent_comments).to eq(subject.comments.order(created_at: :desc).limit(5))
   end
+
+
 end
