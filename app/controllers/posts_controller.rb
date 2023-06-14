@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
   def index
-    # Placeholder code for the view
+    @posts = Post.all
   end
 
-  def show
-    # Placeholder code for the view
-  end
+  def show; end
 end
