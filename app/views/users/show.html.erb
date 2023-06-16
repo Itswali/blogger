@@ -1,2 +1,15 @@
-<p>Here is the profile of a user</p>
+<%= render 'shared/user', user: @user %>
+    <div class="bio">
+        <p> Bio: <%= @user.bio%> </P>
+    </div>
+
+  <% @user.recent_posts.each do |post| %>
+    <%= render 'shared/post', post: post %>
+  <% end %>
+  <div class="see-posts">
+  <%= link_to user_posts_path(@user) do %>
+    <button class="see-posts-btn">See all posts</button>
+  <% end %>
+</div>
+
 <p><%= link_to 'Back', root_path %></p>

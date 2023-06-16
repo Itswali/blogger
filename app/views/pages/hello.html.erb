@@ -5,8 +5,8 @@
 <ul>
   <li><%= link_to 'All Users', users_path %></li>
   <li><%= link_to 'Single User', user_path(1) %></li>
-  <li><%= link_to 'All Posts by User', user_posts_path(1) %></li>
-  <li><%= link_to 'Single Post', post_path(1) %></li>
+  <li><%= link_to 'All Posts by User', user_posts_path(user_id: 1) %></li>
+  <li><%= link_to 'Single Post', post_path(user_id: 1, id: 1) %></li>
 </ul>
 
 <p><%= link_to 'Back', root_path %></p>

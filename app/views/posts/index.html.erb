@@ -1,3 +1,11 @@
-<h1>All Posts by a Given User</h1>
-
-<p><%= link_to 'Back', root_path %></p>
+<%= render 'shared/user', user: @user %>
+<% @posts.each do |post| %>
+  <%= link_to post_path(user_id: @user.id, id: post.id) do %>
+    <%= render partial: 'shared/post', locals: { post: post } %>
+  <% end %>
+  <div class="comments">
+    <% post.recent_comments.each do |comment| %>
+      <%= render partial: 'shared/comment', locals: { comment: comment } %>
+    <% end %>
+  </div>
+<% end %>
